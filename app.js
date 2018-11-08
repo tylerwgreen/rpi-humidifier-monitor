@@ -115,7 +115,7 @@ var app = {
 			var offset = date.getTimezoneOffset() / 60;
 			var hours = date.getHours();
 			newDate.setHours(hours - offset);
-			return newDate.toISOString().slice(0, 19).replace('T', ' ');
+			return newDate.toISOString().slice(0, 16).replace('T', ' ');
 		},
 		_errorReset: function(){
 			app.logger.debug('_errorReset()');

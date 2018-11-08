@@ -9,9 +9,15 @@ var humidifier = {
 		humidifier._logger = args.logger.getLogger('humidifier', 'debug');
 		humidifier._logger.debug('init()', JSON.stringify(args.config));
 		humidifier._gpioPin = args.config.gpioPin;
-		// humidifier.deactivate();
 		humidifier._relayInit();
 		humidifier._shutdownInit();
+		humidifier.deactivate()
+			.then(function(){
+				humidifier._logger.silly(['init()', 'humidifier.deactivate() success']);
+			})
+			.catch(function(err){
+				humidifier._logger.error(['init()', 'humidifier.deactivate() error', err]);
+			});
 	},
 	activate: function(){
 		humidifier._logger.debug('activate()');

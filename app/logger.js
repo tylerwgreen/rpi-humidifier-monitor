@@ -9,7 +9,7 @@ var logger = {
 	_config: null,
 	init: function(config){
 		this._config = config;
-		console.log("\nlogger.init() --------------------------------------------------\n");
+		// console.log("\nlogger.init() --------------------------------------------------\n");
 	},
 	_getFileLogLocation: function(){
 		return process.env['APP_ROOT_DIR'] + this._config.file;

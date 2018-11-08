@@ -27,13 +27,15 @@ var dhtSensor = {
 				if(err){
 					dhtSensor._logger.error(['updateReading()', 'updateReadingMethod() returned error', err]);
 					reject(err);
+				}else{
+					// set sensor reading
+					dhtSensor.reading = {
+						temperature: dhtSensor._convertTempToF(tempC).toFixed(1),
+						humidity: humidity.toFixed(1)
+					};
+					dhtSensor._logger.info(['updateReading()', 'updateReadingMethod() success', JSON.stringify(dhtSensor.reading)]);
+					resolve(dhtSensor.reading);
 				}
-				// set sensor reading
-				dhtSensor.reading = {
-					temperature: dhtSensor._convertTempToF(tempC).toFixed(1),
-					humidity: humidity.toFixed(1)
-				};
-				resolve(dhtSensor.reading);
 			});
 		})
 	},

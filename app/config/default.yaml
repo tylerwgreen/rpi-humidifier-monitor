@@ -1,14 +1,14 @@
-errorResetTimeout: 5000 # milliseconds
-readingInterval: 5000 # milliseconds
+errorResetTimeout: 60000 # milliseconds
+readingInterval: 60000 # milliseconds
 console:
     logLevel: info
 logger:
     # allow individual modules to set level from method logger.getLogger()
-    allowModuleOverride: true
+    allowModuleOverride: false
     file: /var/log/error.log
     fileLogging: true
-    fileLoggingLevel: silly
-    consoleLogging: true
+    fileLoggingLevel: info
+    consoleLogging: false
     consoleLoggingLevel: silly
 dhtSensor:
     fakeReading: true
@@ -23,4 +23,5 @@ dataSheet:
     credentials: /app/config/private/Humidifier Monitor-6bf015eab256.json
     spreadsheetID: 15Vc-gM_5fFdH7BFhbRnWXpgnGISO3igOSy89BsGaDyk
     sheetID: od6
-    maxRows: 11 # +1 to account for header row
+    #maxRows: 43201 # +1 to account for header row
+    maxRows: 61 # +1 to account for header row
