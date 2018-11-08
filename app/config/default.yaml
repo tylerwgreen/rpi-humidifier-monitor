@@ -1,0 +1,26 @@
+errorResetTimeout: 5000 # milliseconds
+readingInterval: 5000 # milliseconds
+console:
+    logLevel: info
+logger:
+    # allow individual modules to set level from method logger.getLogger()
+    allowModuleOverride: true
+    file: /var/log/error.log
+    fileLogging: true
+    fileLoggingLevel: silly
+    consoleLogging: true
+    consoleLoggingLevel: silly
+dhtSensor:
+    fakeReading: true
+    sensorType: 22
+    gpioPin: 4
+    humidityReadingRanges:
+        hi: 40
+        lo: 30
+humidifier:
+    gpioPin: 8
+dataSheet:
+    credentials: /app/config/private/Humidifier Monitor-6bf015eab256.json
+    spreadsheetID: 15Vc-gM_5fFdH7BFhbRnWXpgnGISO3igOSy89BsGaDyk
+    sheetID: od6
+    maxRows: 11 # +1 to account for header row
