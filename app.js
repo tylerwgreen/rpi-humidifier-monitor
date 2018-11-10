@@ -84,7 +84,7 @@ var app = {
 				humidity: app.dhtSensor.getHumidityReading(),
 			})
 				.then(function(row){
-					app.logger.silly(['readings.logReading()', 'dataSheet.addRow() success', row]);
+					app.logger.silly(['readings.logReading()', 'dataSheet.addRow() success', JSON.stringify(row)]);
 					app.readings.timer.start();
 				})
 				.catch(function(err){

@@ -82,7 +82,7 @@ var humidifier = {
 	_shutdownCB: function(options, err){
 		humidifier._logger.debug(['_shutdownCB()', JSON.stringify(options), err]);
 		if(err)
-			humidifier._logger.warn(['_shutdownCB()', '_shutdownCB() was passed an error', JSON.stringify(err), err.stack]);
+			humidifier._logger.warn(['_shutdownCB()', '_shutdownCB() was passed an error', JSON.stringify(err)]);
 		if(options.cleanup)
 			humidifier._logger.info(['_shutdownCB()', 'cleanup', JSON.stringify(options.cleanup)]);
 		humidifier.deactivate()

@@ -5,7 +5,7 @@ var dhtSensor = {
 	_fakeReading: null,
 	_sensorType: null,
 	_gpioPin: null,
-	_humidityReadingRanges: null,
+	_minHumidityLevel: null,
 	reading: null,
 	init: function(args){
 		dhtSensor._logger = args.logger.getLogger('dhtSensor', 'info');
@@ -13,7 +13,7 @@ var dhtSensor = {
 		dhtSensor._fakeReading = args.config.fakeReading;
 		dhtSensor._sensorType = args.config.sensorType;
 		dhtSensor._gpioPin = args.config.gpioPin;
-		dhtSensor._humidityReadingRanges = args.config.humidityReadingRanges;
+		dhtSensor._minHumidityLevel = args.config.minHumidityLevel;
 		if(dhtSensor._fakeReading)
 			dhtSensor._logger.warn('FAKE READING ENABLED, FAKE READINGS RANDOMIZED');
 	},
@@ -50,11 +50,11 @@ var dhtSensor = {
 	validateHumidityReading: function(){
 		dhtSensor._logger.debug(['validateHumidityReading()', JSON.stringify(dhtSensor.getHumidityReading())]);
 		return new Promise((resolve, reject) => {
-			if(dhtSensor.getHumidityReading() > dhtSensor._humidityReadingRanges.hi)
-				reject('validateHumidityReading()|Invalid|Too Hi|' + dhtSensor.getHumidityReading());
-			else if(dhtSensor.getHumidityReading() < dhtSensor._humidityReadingRanges.lo)
+			// if(dhtSensor.getHumidityReading() < parseFloat(dhtSensor._minHumidityLevel))
+			if(dhtSensor.getHumidityReading() < dhtSensor._minHumidityLevel)
 				reject('validateHumidityReading()|Invalid|Too Low|' + dhtSensor.getHumidityReading());
-			resolve('validateHumidityReading()|Valid');
+			else
+				resolve('validateHumidityReading()|Valid|' + dhtSensor.getHumidityReading());
 		});
 	},
 	_convertTempToF: function(c){

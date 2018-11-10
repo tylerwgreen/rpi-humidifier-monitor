@@ -11,17 +11,16 @@ logger:
     consoleLogging: false
     consoleLoggingLevel: silly
 dhtSensor:
-    fakeReading: true
+    fakeReading: false
     sensorType: 22
-    gpioPin: 4
-    humidityReadingRanges:
-        hi: 40
-        lo: 30
+    gpioPin: 17
+    minHumidityLevel: 45
 humidifier:
-    gpioPin: 8
+    gpioPin: 21
 dataSheet:
     credentials: /app/config/private/Humidifier Monitor-6bf015eab256.json
     spreadsheetID: 15Vc-gM_5fFdH7BFhbRnWXpgnGISO3igOSy89BsGaDyk
     sheetID: od6
     #maxRows: 43201 # +1 to account for header row
-    maxRows: 61 # +1 to account for header row
+    maxRows: 10081 # +1 to account for header row
+    #maxRows: 61 # +1 to account for header row
