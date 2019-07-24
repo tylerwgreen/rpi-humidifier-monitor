@@ -6,7 +6,7 @@ var humidifier = {
 	_socketPort: null,
 	_active: null,
 	init: function(args){
-		humidifier._logger = args.logger.getLogger('humidifier', 'debug');
+		humidifier._logger = args.logger.getLogger('humidifier', 'silly');
 		humidifier._logger.debug('init()', JSON.stringify(args.config));
 		humidifier._gpioPin = args.config.gpioPin;
 		humidifier._relayInit();
@@ -70,14 +70,14 @@ var humidifier = {
 		// so the program will not close instantly
 		process.stdin.resume();
 		// do something when app is closing
-		process.on('exit', humidifier._shutdownCB.bind(null, {cleanup:true}));
+		process.on('exit', humidifier._shutdownCB.bind({processType:'exit'}, {cleanup:true}));
 		// catches ctrl+c event
-		process.on('SIGINT', humidifier._shutdownCB.bind(null, {exit:true}));
+		process.on('SIGINT', humidifier._shutdownCB.bind({processType:'SIGINT'}, {exit:true}));
 		// catches "kill pid" (for example: nodemon restart)
-		process.on('SIGUSR1', humidifier._shutdownCB.bind(null, {exit:true}));
-		process.on('SIGUSR2', humidifier._shutdownCB.bind(null, {exit:true}));
+		process.on('SIGUSR1', humidifier._shutdownCB.bind({processType:'SIGUSR1'}, {exit:true}));
+		process.on('SIGUSR2', humidifier._shutdownCB.bind({processType:'SIGUSR2'}, {exit:true}));
 		// catches uncaught exceptions
-		process.on('uncaughtException', humidifier._shutdownCB.bind(null, {exit:true}));
+		process.on('uncaughtException', humidifier._shutdownCB.bind({processType:'uncaughtException'}, {exit:true}));
 	},
 	_shutdownCB: function(options, err){
 		humidifier._logger.debug(['_shutdownCB()', JSON.stringify(options), err]);

@@ -7,14 +7,14 @@ logger:
     allowModuleOverride: false
     file: /var/log/error.log
     fileLogging: true
-    fileLoggingLevel: info
+    fileLoggingLevel: silly
     consoleLogging: false
     consoleLoggingLevel: silly
 dhtSensor:
     fakeReading: false
     sensorType: 22
     gpioPin: 17
-    minHumidityLevel: 45
+    minHumidityLevel: 50
 humidifier:
     gpioPin: 21
 dataSheet:

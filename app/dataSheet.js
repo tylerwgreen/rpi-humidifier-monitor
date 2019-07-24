@@ -9,7 +9,7 @@ var dataSheet = {
 	_sheet: null,
 	init: function(args){
 		// config module
-		dataSheet._logger = args.logger.getLogger('dataSheet', 'info');
+		dataSheet._logger = args.logger.getLogger('dataSheet', 'silly');
 		dataSheet._logger.debug(['init()', [args.config.maxRows]]);
 		dataSheet._spreadsheetID = args.config.spreadsheetID;
 		dataSheet._sheetID = args.config.sheetID;

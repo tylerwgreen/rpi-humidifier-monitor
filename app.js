@@ -8,8 +8,9 @@ var app = {
 		app.config = require('config');
 		var logger = require('logger');
 		logger.init(app.config.get('logger'));
-		app.logger = logger.getLogger('app', 'debug');
+		app.logger = logger.getLogger('app', 'silly');
 		app.logger.debug('init()');
+		app.moment = require('moment');
 		app.dhtSensor = require('dhtSensor');
 		app.dhtSensor.init({
 			logger: logger,
@@ -110,12 +111,7 @@ var app = {
 		},
 		_getDate: function(){
 			app.logger.debug('_getDate()');
-			var date = new Date();
-			var newDate = new Date(date.getTime() + date.getTimezoneOffset() * 60 * 1000);
-			var offset = date.getTimezoneOffset() / 60;
-			var hours = date.getHours();
-			newDate.setHours(hours - offset);
-			return newDate.toISOString().slice(0, 16).replace('T', ' ');
+			return app.moment().format('YYYY-MM-DD HH:mm');
 		},
 		_errorReset: function(){
 			app.logger.debug('_errorReset()');

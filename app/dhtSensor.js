@@ -8,7 +8,7 @@ var dhtSensor = {
 	_minHumidityLevel: null,
 	reading: null,
 	init: function(args){
-		dhtSensor._logger = args.logger.getLogger('dhtSensor', 'info');
+		dhtSensor._logger = args.logger.getLogger('dhtSensor', 'silly');
 		dhtSensor._logger.debug(['init()', JSON.stringify(args.config)]);
 		dhtSensor._fakeReading = args.config.fakeReading;
 		dhtSensor._sensorType = args.config.sensorType;

@@ -17,6 +17,7 @@
 		"node-dht-sensor": "~0.0.34",
 		"google-spreadsheet": "~2.0.6",
 		"node-datetime": "~2.1.2",
-		"pigpio": "~1.1.4"
+		"pigpio": "~1.1.4",
+		"moment": "~2.22.2"
 	}
 }
