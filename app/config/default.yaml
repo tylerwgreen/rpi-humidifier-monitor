@@ -1,19 +1,35 @@
-errorResetTimeout: 60000 # milliseconds
-readingInterval: 60000 # milliseconds
-console:
-    logLevel: info
+# errorResetTimeout: 60000 # milliseconds
+# readingInterval: 60000 # milliseconds
+errorResetTimeout: 10000 # milliseconds
+readingInterval: 10000 # milliseconds
+# errorResetTimeout: 1000 # milliseconds
+# readingInterval: 1000 # milliseconds
+# console:
+    # logLevel: info
 logger:
+    # error: 0
+    # warn: 1
+    # info: 2
+    # verbose: 3
+    # debug: 4
+    # silly: 5
     # allow individual modules to set level from method logger.getLogger()
     allowModuleOverride: false
     file: /var/log/error.log
     fileLogging: true
-    fileLoggingLevel: silly
-    consoleLogging: false
-    consoleLoggingLevel: silly
+    fileLoggingLevel: error
+    consoleLogging: true
+    consoleLoggingLevel: info
+    # consoleLoggingLevel: silly
 dhtSensor:
     fakeReading: false
     sensorType: 22
     gpioPin: 17
+    minHumidityLevel: 50
+htu21dSensor:
+    fakeReading: false
+    bus: /dev/i2c-1
+    address: 0x40
     minHumidityLevel: 50
 humidifier:
     gpioPin: 21

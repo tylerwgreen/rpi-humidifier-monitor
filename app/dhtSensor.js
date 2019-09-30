@@ -24,6 +24,7 @@ var dhtSensor = {
 			var updateReadingMethod = dhtSensor._fakeReading ? dhtSensor._fakeSensorRead : sensorLib.read;
 			// read sensor
 			updateReadingMethod(dhtSensor._sensorType, dhtSensor._gpioPin, function(err, tempC, humidity){
+				dhtSensor._logger.silly(['updateReading()', 'callback params', JSON.stringify({err, tempC, humidity})]);
 				if(err){
 					dhtSensor._logger.error(['updateReading()', 'updateReadingMethod() returned error', err]);
 					reject(err);
